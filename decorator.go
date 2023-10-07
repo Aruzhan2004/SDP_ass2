@@ -2,13 +2,11 @@ package main
 
 import "fmt"
 
-// Coffee interface defines the methods for cost and ingredients.
 type Coffee interface {
 	Cost() float64
 	Ingredients() string
 }
 
-// Espresso is a concrete implementation of Coffee.
 type Espresso struct{}
 
 func (e *Espresso) Ingredients() string {
@@ -19,7 +17,6 @@ func (e *Espresso) Cost() float64 {
 	return 100.0
 }
 
-// CoffeeDecorator is a base decorator struct for Coffee.
 type CoffeeDecorator struct {
 	Coffee Coffee
 }
@@ -32,7 +29,6 @@ func (cd *CoffeeDecorator) Cost() float64 {
 	return cd.Coffee.Cost()
 }
 
-// Milk is a concrete decorator for adding milk to Coffee.
 type Milk struct {
 	Decorator *CoffeeDecorator
 }
@@ -45,7 +41,6 @@ func (m *Milk) Cost() float64 {
 	return m.Decorator.Cost() + 20.0
 }
 
-// Whip is a concrete decorator for adding whip to Coffee.
 type Whip struct {
 	Decorator *CoffeeDecorator
 }
@@ -58,7 +53,6 @@ func (w *Whip) Cost() float64 {
 	return w.Decorator.Cost() + 30.0
 }
 
-// Chocolate is a concrete decorator for adding chocolate to Coffee.
 type Chocolate struct {
 	Decorator *CoffeeDecorator
 }
